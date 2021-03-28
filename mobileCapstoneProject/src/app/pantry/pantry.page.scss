@@ -1,0 +1,55 @@
+ion-header, ion-title, ion-toolbar{
+  background: url(../../assets/images/dark-wood.jpg) 0/100% 100%;
+}
+
+ion-header,ion-toolbar{
+  --min-height: 70px;
+}
+
+ion-title{
+  color: white;
+}
+
+ion-searchbar{
+  --background: white;
+  margin-bottom: 10px;
+}
+
+ion-content{
+  --background: url(../../assets/images/light-wood.jpg) 0/100% 100%;
+}
+
+ion-col > div {
+  background: url(../../assets/images/dark-wood.jpg) 0/100% 100%;
+  height: 38px;
+  margin-bottom: 10px;
+  color: white
+}
+
+.category {
+  text-align: center;
+  padding-top: 10px;
+}
+
+ion-col > div > img{
+  border-radius: 100%;
+  float: left;
+  margin: 5px;
+}
+
+.arrow{
+  float: right;
+}
+
+.arrow-btn{
+  border: none;
+  background: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  padding-bottom: 10px;
+}
+
+ion-icon{
+  font-size: large;
+}
