@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  goStartRecipe(){
+    this.router.navigateByUrl('/tabs/tab1/search-result');
+  }
+
+  goSearchRecipe(){
+    this.router.navigateByUrl('/tabs/tab1/start-recipe');
+  }
 }

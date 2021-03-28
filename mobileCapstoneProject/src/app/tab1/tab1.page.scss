@@ -2,20 +2,14 @@ ion-button{
   --background: green;
 }
 
+.background-image{
+  --background: url(../../assets/img/background/light-wood.jpg) 0 0/100% 100% no-repeat;
+}
 
-ion-title{
+ion-toolbar{
   color: white;
-  background: saddlebrown;
+  --background: url(../../assets/img/background/dark-wood.jpg) 0 0/100% 100% no-repeat;
   margin-top: 0;
-}
-
-ion-header, ion-toolbar{
-  background: saddlebrown;
-  margin-bottom: 0;
-}
-
-ion-content{
-  --background: bisque;
 }
 
 ion-searchbar{
