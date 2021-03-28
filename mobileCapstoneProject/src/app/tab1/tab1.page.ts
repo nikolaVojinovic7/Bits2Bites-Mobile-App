@@ -10,11 +10,9 @@ export class Tab1Page {
 
   constructor(private router: Router) {}
 
-  goStartRecipe(){
+  goSearchRecipe(){
     this.router.navigateByUrl('/tabs/tab1/search-result');
   }
 
-  goSearchRecipe(){
-    this.router.navigateByUrl('/tabs/tab1/start-recipe');
-  }
+
 }
