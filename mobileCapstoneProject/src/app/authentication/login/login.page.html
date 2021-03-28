@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true" padding="true" class="background">
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <img src="../../assets/bitstobiteslogo.png" class="logo" />
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            name="email"
+            type="text"
+            value="emmanuel.sogelola@georgebrown.ca"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            name="password"
+            type="password"
+            value="emmanuel12"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              type="submit"
+              color="success"
+              class="btn-green"
+              expand="block"
+            >
+              Log In
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center ion-padding-vertical">
+            <ion-router-link class="text-gray" (click)="presentAlert()">
+              Forgot Password?
+            </ion-router-link>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center ion-padding-vertical">
+            Don't have an account
+            <ion-router-link class="text-red" href="/register">
+              Sign Up.
+            </ion-router-link>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
