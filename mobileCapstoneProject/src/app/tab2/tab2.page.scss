@@ -1,0 +1,12 @@
+ion-header, ion-toolbar, ion-title{
+    background: url(../../assets/images/dark-wood.jpg) 0/100% 100%;
+    margin-bottom: 0;
+}
+
+ion-content {
+    --background: url(../../assets/images/light-wood.jpg) 0/100% 100%;
+}
+
+ion-searchbar{
+    --background: white;
+}
