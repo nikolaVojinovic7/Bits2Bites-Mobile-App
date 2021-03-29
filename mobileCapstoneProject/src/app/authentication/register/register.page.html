@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true" padding="true" class="background">
+  <ion-grid>
+    <div class="title">
+      <h1>Welcome to Bits to Bites!</h1>
+      <h5>Let us help you prepare your next meal.</h5>
+    </div>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-item lines="full">
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input
+            name="name"
+            type="text"
+            required
+            value="Emmanuel Sogelola"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            name="email"
+            type="text"
+            required
+            value="emmanuel.sogelola@georgebrown.ca"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            name="password"
+            type="password"
+            value="emmanuel12"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input
+            name="confirmPassword"
+            type="password"
+            value="emmanuel12"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              type="submit"
+              expand="block"
+            >
+              Register
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center ion-padding-vertical">
+            Already have an account?
+            <ion-router-link class="text-red" href="/login">
+              Sign In.
+            </ion-router-link>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

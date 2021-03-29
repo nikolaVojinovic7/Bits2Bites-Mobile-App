@@ -1,0 +1,52 @@
+ion-toolbar {
+  --background: none;
+  background-image: url('/assets/img/background/dark-wood.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+ion-content {
+  --background: none;
+  background-image: url('/assets/img/background/light-wood.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ion-button {
+  --background: #7C9262;
+  align-items: center;
+  padding: 5px;
+  size: large;
+}
+
+ion-grid{
+  --ion-grid-padding: 0;
+}
+
+ion-col {
+  text-align: center;
+}
+
+input[type=text] {
+  width: 60%;
+  padding: 8px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+.user-info{
+  background-color: #FFFEFE;
+}
+
+
+

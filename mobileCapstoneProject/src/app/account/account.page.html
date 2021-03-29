@@ -1,0 +1,113 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <!-- 1st back button.
+      Need to have two of them some emlorters use this one.
+      Other times the 2nd one, Not sure why might an iso vs android thing-->
+    <ion-buttons slot="start" class="ion-padding">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      My Account
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <!-- 2nd back butt-->
+    <ion-buttons slot="start" class="ion-padding">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-toolbar class="ion-padding">
+      <ion-title size="large" class="ion-text-center">My Account</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Start of Main body -->
+  <ion-grid>
+    <!-- Empty rows to create padding before the Main Body. Will find a cleaner way to do this in next version. -->
+    <ion-row><ion-col></ion-col></ion-row>
+    <ion-row><ion-col></ion-col></ion-row>
+    <ion-row><ion-col></ion-col></ion-row>
+    <!-- FULL NAME Row Start -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="user-info" size="5">
+        <div >
+          Full Name
+        </div>
+      </ion-col>
+      <ion-col class="user-info" size="6">
+        <div>
+          Stefan Grujic
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- FULL NAME Button Row Start-->
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button (click)="goUsername()">Edit Name</ion-button>
+
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- EMAIL Row Start -->
+    <ion-row class="ion-justify-content-center" >
+      <ion-col class="user-info" size="5">
+        <div >
+          Email
+        </div>
+      </ion-col>
+      <ion-col class="user-info" size="6">
+        <div>
+          StefanGrujic@gmail.com
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- EMAIL Button Row Start-->
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button (click)="goEmail()">Edit Email</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- PASSWORD Row Start -->
+    <ion-row class="ion-justify-content-center" >
+      <ion-col class="user-info" size="5">
+        <div >
+          Password
+        </div>
+      </ion-col>
+      <ion-col class="user-info" size="6">
+        <div>
+          ***********
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- PASSWORD Button Row Start-->
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button (click)="goPassword()">Edit Password</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- Empty rows to create padding before the log out button. Will find a cleaner way to do this in next version. -->
+    <ion-row><ion-col></ion-col></ion-row>
+    <ion-row><ion-col></ion-col></ion-row>
+    <ion-row><ion-col></ion-col></ion-row>
+    <!-- LOG OUT Button Row Start-->
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-button href="/login">Log Out</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

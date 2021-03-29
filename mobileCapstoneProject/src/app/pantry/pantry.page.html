@@ -1,0 +1,215 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="large" class="ion-text-center">My Pantry</ion-title>
+  </ion-toolbar>
+    <ion-searchbar placeholder="Add ingredients"></ion-searchbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/dairy-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Dairy <span class = "arrow" ><button class="arrow-btn" (click)="toggleDairy()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showDairy">
+          <ion-list>
+            <ion-item>
+              <ion-label>Butter</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Cheddar Cheese</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Asiago Cheese</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Goat milk</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/broccoli-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Vegetables <span class = "arrow"><button class="arrow-btn" (click)="toggleVegetables()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showVegetables">
+          <ion-list>
+            <ion-item>
+              <ion-label>Spinach</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Broccoli</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Garlic</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Kale</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/fruit-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Fruits <span class = "arrow"><button class="arrow-btn" (click)="toggleFruits()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showFruits">
+          <ion-list>
+            <ion-item>
+              <ion-label>Apples</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Melons</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Apricots</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Grapes</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/grains-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Grains <span class = "arrow"><button class="arrow-btn" (click)="toggleGrains()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showGrains">
+          <ion-list>
+            <ion-item>
+              <ion-label>Oats</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>White Flour</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Spelt Flour</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Barley</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/meat-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Meat <span class = "arrow"><button class="arrow-btn" (click)="toggleMeat()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showMeat">
+          <ion-list>
+            <ion-item>
+              <ion-label>Beef</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Chicken</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Pork</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Turkey</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/nuts-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Seafood <span class = "arrow"><button class="arrow-btn" (click)="toggleSeafood()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showSeafood">
+          <ion-list>
+            <ion-item>
+              <ion-label>Shrimp</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Salmon</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/seafood-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Spices <span class = "arrow"><button class="arrow-btn" (click)="toggleSpices()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showSpices">
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/spices-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Sweeteners <span class = "arrow"><button class="arrow-btn" (click)="toggleSweeteners()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showSweeteners">
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/sweetners-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Nuts <span class = "arrow"><button class="arrow-btn" (click)="toggleNuts()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showNuts">
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
