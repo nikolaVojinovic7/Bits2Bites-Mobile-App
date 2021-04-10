@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { RecipeService } from '../../data/recipe.service'
+
 
 @Component({
   selector: 'app-search-result',
@@ -7,10 +9,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./search-result.page.scss'],
 })
 export class SearchResultPage implements OnInit {
+  recipes: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private recipeService: RecipeService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.recipes = this.recipeService.getAllRecipes();
   }
 
   goStartRecipe(){

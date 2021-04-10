@@ -10,12 +10,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6">
-        <ion-img src="../assets/img/favourites/fav1.jpg" (click)="goStartRecipe()"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+  <ion-card *ngFor="let item of (recipes | async)" >
+    <ion-card-header>
+      <ion-card-title>{{item.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content><img src="{{item.imageUrl}}" (click)="goStartRecipe()" class="recipe-img"/></ion-card-content>
+  </ion-card>
 </ion-content>
+
+

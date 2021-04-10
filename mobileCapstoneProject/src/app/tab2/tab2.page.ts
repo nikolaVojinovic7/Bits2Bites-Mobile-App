@@ -1,5 +1,4 @@
 import { Component, OnInit  } from '@angular/core';
-import { UserService } from '../data/user.service'
 
 @Component({
   selector: 'app-tab2',
@@ -7,13 +6,9 @@ import { UserService } from '../data/user.service'
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
-    results: any;
-
-    test: any;
-
-    constructor(private userData: UserService) {}
+    constructor() {}
 
     ngOnInit(): void {
-      this.results = this.userData.getAllUsers()
+
     }
 }
