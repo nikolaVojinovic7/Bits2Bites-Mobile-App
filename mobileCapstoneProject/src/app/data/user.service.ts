@@ -12,4 +12,8 @@ export class UserService {
   getAllUsers(){
     return this.http.get(this.ROOT_URL + '/allUsers')
   }
+
+  createUser(form){
+    return this.http.post(this.ROOT_URL + '/createUser', form.value)
+  }
 }
