@@ -1,6 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { UserService } from '../data/user.service'
 
 @Component({
   selector: 'app-tab2',
@@ -9,23 +8,12 @@ import { map } from 'rxjs/operators';
 })
 export class Tab2Page implements OnInit {
     results: any;
-    url = 'http://localhost:8087/api/public/allUsers';
 
-    getUserByName: any;
-    urlName = 'http://localhost:8087/api/public/users/username/Stefan';
+    test: any;
 
-    constructor(private http: HttpClient) {}
-
-    getUsers() {
-
-    }
+    constructor(private userData: UserService) {}
 
     ngOnInit(): void {
-      this.results = this.http.get(this.url).pipe(
-        map(results => {
-          console.log('RAW :: ', results);
-          return results;
-        })
-      );
+      this.results = this.userData.getAllUsers()
     }
 }
