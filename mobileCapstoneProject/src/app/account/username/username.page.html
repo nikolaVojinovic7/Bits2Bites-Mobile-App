@@ -1,9 +1,6 @@
-<ion-header [translucent]="true">
+<ion-header >
   <ion-toolbar>
-    <!-- 1st back button.
-      Need to have two of them some emlorters use this one.
-      Other times the 2nd one, Not sure why might an iso vs android thing-->
-    <ion-buttons slot="start" class="ion-padding">
+    <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
@@ -12,18 +9,8 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <!-- 2nd back butt-->
-    <ion-buttons slot="start" class="ion-padding">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
 
-    <ion-toolbar class="ion-padding">
-      <ion-title size="large">
-        Edit Username</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="7">

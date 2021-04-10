@@ -1,14 +1,16 @@
 <ion-header>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+
   <ion-toolbar>
-    <ion-title size="large" class="ion-text-center">Search Recipes</ion-title>
+    <ion-title>Search Recipes</ion-title>
   </ion-toolbar>
-  <ion-toolbar class="ion-text-center">
+  <ion-toolbar>
     <ion-searchbar></ion-searchbar>
     <ion-button (click)="goSearchRecipe()">See Search Results</ion-button>
   </ion-toolbar>
-
 </ion-header>
-
 
 <ion-content>
   <h2>Diet</h2>

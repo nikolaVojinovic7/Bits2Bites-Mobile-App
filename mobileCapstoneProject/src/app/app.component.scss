@@ -1,0 +1,32 @@
+//This CSS is for the whole app be careful what you change here
+// If you dont see your changes right away restart you ionic serve
+ion-toolbar {
+  --background: none;
+  background-image: url('/assets/img/background/dark-wood.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+ion-header {
+  --background: none;
+  background-image: url('/assets/img/background/dark-wood.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  min-height: 70px;
+  text-align: center;
+}
+
+ion-content {
+  --background: none;
+  background-image: url('/assets/img/background/light-wood.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ion-searchbar{
+  --background: white;
+  margin-bottom: 10px;
+}
