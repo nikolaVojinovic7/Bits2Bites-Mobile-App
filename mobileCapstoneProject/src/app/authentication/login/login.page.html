@@ -8,7 +8,7 @@
           <ion-input
             name="email"
             type="text"
-            value="emmanuel.sogelola@georgebrown.ca"
+            placeholder="Enter Email"
             required
           ></ion-input>
         </ion-item>
@@ -17,7 +17,6 @@
           <ion-input
             name="password"
             type="password"
-            value="emmanuel12"
             required
           ></ion-input>
         </ion-item>
@@ -34,17 +33,13 @@
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center ion-padding-vertical">
-            <ion-router-link class="text-gray" (click)="presentAlert()">
-              Forgot Password?
-            </ion-router-link>
+              <a class="text-gray" (click)="presentAlert()">Forgot Password?</a>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center ion-padding-vertical">
             Don't have an account
-            <ion-router-link class="text-red" href="/register">
-              Sign Up.
-            </ion-router-link>
+              <a class="text-red" href="/register">Sign Up.</a>
           </ion-col>
         </ion-row>
       </ion-col>
