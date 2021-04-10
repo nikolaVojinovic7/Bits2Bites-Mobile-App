@@ -1,2 +1,2 @@
-# MobileCapstoneProject Stefan Grujic Branch
+# MobileCapstoneProject
 Recipe Generating Application on Ionic Platform
