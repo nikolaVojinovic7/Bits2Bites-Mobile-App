@@ -8,10 +8,19 @@
   </ion-toolbar>
 
   <ion-toolbar>
-    <ion-searchbar placeholder="Add ingredients"></ion-searchbar>
+    <ion-item>
+      <ion-label>Choose Ingredient...</ion-label>
+      <ionic-selectable
+        [(ngModel)]="ingredient"
+        [items]="ingredients"
+        itemValueField="id"
+        itemTextField="name"
+        [canSearch]="true"
+        (onChange)=" ingredientChange($event)">
+      </ionic-selectable>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
@@ -23,20 +32,13 @@
           <p class="category">Dairy <span class = "arrow" ><button class="arrow-btn" (click)="toggleDairy()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showDairy">
+          <div *ngFor="let item of dairy">
           <ion-list>
             <ion-item>
-              <ion-label>Butter</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Cheddar Cheese</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Asiago Cheese</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Goat milk</ion-label>
+              <ion-label>{{item.name}}</ion-label>
             </ion-item>
           </ion-list>
+        </div>
         </div>
       </ion-col>
       <ion-col>
@@ -51,20 +53,13 @@
           <p class="category">Vegetables <span class = "arrow"><button class="arrow-btn" (click)="toggleVegetables()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showVegetables">
-          <ion-list>
-            <ion-item>
-              <ion-label>Spinach</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Broccoli</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Garlic</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Kale</ion-label>
-            </ion-item>
-          </ion-list>
+          <div *ngFor="let item of vegetables">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -79,20 +74,13 @@
           <p class="category">Fruits <span class = "arrow"><button class="arrow-btn" (click)="toggleFruits()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showFruits">
-          <ion-list>
-            <ion-item>
-              <ion-label>Apples</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Melons</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Apricots</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Grapes</ion-label>
-            </ion-item>
-          </ion-list>
+          <div *ngFor="let item of fruits">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -107,20 +95,13 @@
           <p class="category">Grains <span class = "arrow"><button class="arrow-btn" (click)="toggleGrains()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showGrains">
-          <ion-list>
-            <ion-item>
-              <ion-label>Oats</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>White Flour</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Spelt Flour</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Barley</ion-label>
-            </ion-item>
-          </ion-list>
+          <div *ngFor="let item of grains">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -135,20 +116,13 @@
           <p class="category">Meat <span class = "arrow"><button class="arrow-btn" (click)="toggleMeat()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showMeat">
-          <ion-list>
-            <ion-item>
-              <ion-label>Beef</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Chicken</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Pork</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Turkey</ion-label>
-            </ion-item>
-          </ion-list>
+          <div *ngFor="let item of meat">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -163,14 +137,13 @@
           <p class="category">Seafood <span class = "arrow"><button class="arrow-btn" (click)="toggleSeafood()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showSeafood">
-          <ion-list>
-            <ion-item>
-              <ion-label>Shrimp</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Salmon</ion-label>
-            </ion-item>
-          </ion-list>
+          <div *ngFor="let item of seafood">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -185,6 +158,13 @@
           <p class="category">Spices <span class = "arrow"><button class="arrow-btn" (click)="toggleSpices()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showSpices">
+          <div *ngFor="let item of spices">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -199,6 +179,13 @@
           <p class="category">Sweeteners <span class = "arrow"><button class="arrow-btn" (click)="toggleSweeteners()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showSweeteners">
+          <div *ngFor="let item of sweeteners">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
@@ -213,11 +200,101 @@
           <p class="category">Nuts <span class = "arrow"><button class="arrow-btn" (click)="toggleNuts()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
         </div>
         <div *ngIf="showNuts">
+          <div *ngFor="let item of nuts">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/sweetners-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Oils <span class = "arrow"><button class="arrow-btn" (click)="toggleOils()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showOils">
+          <div *ngFor="let item of oils">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/sweetners-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Sauces <span class = "arrow"><button class="arrow-btn" (click)="toggleSauces()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showSauces">
+          <div *ngFor="let item of sauces">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/sweetners-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Beverages <span class = "arrow"><button class="arrow-btn" (click)="toggleBeverages()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showBeverages">
+          <div *ngFor="let item of beverages">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col size='8'>
+        <div class ="category-container">
+          <img src="../../assets/img/pantry/sweetners-icon.jpg" alt="dairy" width="27" height="27">
+          <p class="category">Other <span class = "arrow"><button class="arrow-btn" (click)="toggleOther()"><ion-icon name="caret-down-outline"></ion-icon></button></span></p>
+        </div>
+        <div *ngIf="showOther">
+          <div *ngFor="let item of other">
+            <ion-list>
+              <ion-item>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
         </div>
       </ion-col>
       <ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>
