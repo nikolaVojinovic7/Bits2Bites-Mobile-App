@@ -12,8 +12,19 @@ export class PantryPage {
 
   ingredients: Ingredient[];
   ingredient: Ingredient;
-
-
+  dairy: Ingredient[] = [];
+  vegetables: Ingredient[] = [];
+  fruits: Ingredient[] = [];
+  grains: Ingredient[] = [];
+  meat: Ingredient[] = [];
+  seafood: Ingredient[] = [];
+  spices: Ingredient[] = [];
+  sweeteners: Ingredient[] = [];
+  nuts: Ingredient[] = [];
+  oils: Ingredient[] = [];
+  sauces: Ingredient[] = [];
+  beverages: Ingredient[] = [];
+  other: Ingredient[] = [];
   showDairy = false;
   showVegetables = false;
   showFruits = false;
@@ -23,6 +34,10 @@ export class PantryPage {
   showSpices = false;
   showSweeteners = false;
   showNuts = false;
+  showOils = false;
+  showSauces = false;
+  showBeverages = false;
+  showOther = false;
 
   constructor(private ingredientService: IngredientService) {}
 
@@ -35,10 +50,52 @@ export class PantryPage {
     component: IonicSelectableComponent,
     value: any
   }) {
-    console.log('ingredient:', event.value);
+    this.categorizeIngredient(event.value);
   }
 
-  toggleDairy() {
+  categorizeIngredient(value){
+    if (value.category == "dairy"){
+      this.dairy.push(value);
+    }
+    if (value.category == "vegetables"){
+      this.vegetables.push(value);
+    }
+    if (value.category == "fruits"){
+      this.fruits.push(value);
+    }
+    if (value.category == "grains"){
+      this.grains.push(value);
+    }
+    if (value.category == "meat"){
+      this.meat.push(value);
+    }
+    if (value.category == "seafood"){
+      this.seafood.push(value);
+    }
+    if (value.category == "spices"){
+      this.spices.push(value);
+    }
+    if (value.category == "sweeteners"){
+      this.sweeteners.push(value);
+    }
+    if (value.category == "nuts"){
+      this.nuts.push(value);
+    }
+    if (value.category == "oils"){
+      this.oils.push(value);
+    }
+    if (value.category == "sauces"){
+      this.sauces.push(value);
+    }
+    if (value.category == "beverages"){
+      this.beverages.push(value);
+    }
+    if (value.category == "other"){
+      this.other.push(value);
+    }
+  }
+
+ toggleDairy() {
     this.showDairy = !this.showDairy;
  }
  toggleVegetables() {
@@ -64,6 +121,18 @@ toggleSweeteners() {
 }
 toggleNuts() {
   this.showNuts = !this.showNuts;
+}
+toggleOils() {
+  this.showOils = !this.showOils;
+}
+toggleSauces() {
+  this.showSauces = !this.showSauces;
+}
+toggleBeverages() {
+  this.showBeverages = !this.showBeverages;
+}
+toggleOther() {
+  this.showOther = !this.showOther;
 }
 
 }
