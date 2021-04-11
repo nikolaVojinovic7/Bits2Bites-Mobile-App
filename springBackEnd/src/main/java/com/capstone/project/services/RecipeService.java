@@ -39,6 +39,8 @@ public class RecipeService implements RecipeServiceAbs{
 
     @Override
     public Recipe save(Recipe recipe) {
+        String nameLower = recipe.getName().toLowerCase();
+        recipe.setName(nameLower);
         return recipeRepository.save(recipe);
     }
 
