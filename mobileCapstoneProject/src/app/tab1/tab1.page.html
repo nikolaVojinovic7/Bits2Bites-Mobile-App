@@ -7,10 +7,11 @@
     <ion-title>Search Recipes</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar [(ngModel)]="titleName" ></ion-searchbar>
     <ion-button (click)="goSearchRecipe()">See Search Results</ion-button>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <h2>Diet</h2>

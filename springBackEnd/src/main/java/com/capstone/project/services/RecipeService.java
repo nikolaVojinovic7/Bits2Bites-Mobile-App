@@ -57,4 +57,9 @@ public class RecipeService implements RecipeServiceAbs{
     public Set<Recipe> findAllByName(String name) {
         return recipeRepository.findAllByName(name);
     }
+
+    @Override
+    public Set<Recipe> findByNameContains(String name) {
+        return recipeRepository.findByNameContains(name);
+    }
 }

@@ -10,6 +10,14 @@ export class RecipeService {
   constructor(private http: HttpClient) { }
 
   getAllRecipes(){
-    return this.http.get(this.ROOT_URL + '/allRecipes')
+    return this.http.get(this.ROOT_URL + '/allRecipes');
+  }
+
+  getSetRecipeByName(title){
+    return this.http.get(`${this.ROOT_URL}/getSetRecipeByName/${title}`);
+  }
+
+  getSetRecipeContainsName(title){
+    return this.http.get(`${this.ROOT_URL}/getSetRecipeContainsName/${title}`);
   }
 }

@@ -161,6 +161,16 @@ public class RecipeController {
         return recipes;
     }
 
+    // get set of recipe containing name/title rest api
+    @GetMapping("/getSetRecipeContainsName/{name}")
+    public Set<Recipe> getAllRecipeContainsName(@PathVariable String name) {
+        Set<Recipe> recipes = recipeService.findByNameContains(name);
+        if(recipes == null){
+            throw new ResourceNotFoundException("There are no recipes with name" + name);
+        }
+        return recipes;
+    }
+
     // create recipe rest api
     @PostMapping("/createRecipe")
     public Recipe createRecipe(@RequestBody Recipe recipe) {

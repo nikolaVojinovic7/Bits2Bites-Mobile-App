@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { RecipeService } from '../../data/recipe.service'
+import { RecipeService } from '../../data/recipe.service';
 
 
 @Component({
@@ -10,11 +10,14 @@ import { RecipeService } from '../../data/recipe.service'
 })
 export class SearchResultPage implements OnInit {
   recipes: any;
+  title: string;
 
   constructor(private router: Router, private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.recipes = this.recipeService.getAllRecipes();
+    this.title = history.state.titleName;
+    console.log(this.title);
+    this.recipes = this.recipeService.getSetRecipeContainsName(this.title);
   }
 
   goStartRecipe(){
