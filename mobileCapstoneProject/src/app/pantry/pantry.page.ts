@@ -6,10 +6,9 @@ import { Ingredient } from '../models/ingredient';
 @Component({
   selector: 'app-pantry',
   templateUrl: 'pantry.page.html',
-  styleUrls: ['pantry.page.scss']
+  styleUrls: ['pantry.page.scss'],
 })
 export class PantryPage {
-
   ingredients: Ingredient[];
   ingredient: Ingredient;
   dairy: Ingredient[] = [];
@@ -42,97 +41,146 @@ export class PantryPage {
   constructor(private ingredientService: IngredientService) {}
 
   ngOnInit(): void {
-    this.ingredientService.getAllIngredients()
-      .subscribe((data: any[]) => this.ingredients = data);
+    this.ingredientService
+      .getAllIngredients()
+      .subscribe((data: any[]) => (this.ingredients = data));
   }
 
-  ingredientChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    this.categorizeIngredient(event.value);
+  ingredientChange(event: { component: IonicSelectableComponent; value: any }) {
+    this.addIngredient(event.value);
   }
 
-  categorizeIngredient(value){
-    if (value.category == "dairy"){
+  addIngredient(value) {
+    if (value.category == 'dairy') {
       this.dairy.push(value);
     }
-    if (value.category == "vegetables"){
+    if (value.category == 'vegetables') {
       this.vegetables.push(value);
     }
-    if (value.category == "fruits"){
+    if (value.category == 'fruits') {
       this.fruits.push(value);
     }
-    if (value.category == "grains"){
+    if (value.category == 'grains') {
       this.grains.push(value);
     }
-    if (value.category == "meat"){
+    if (value.category == 'meat') {
       this.meat.push(value);
     }
-    if (value.category == "seafood"){
+    if (value.category == 'seafood') {
       this.seafood.push(value);
     }
-    if (value.category == "spices"){
+    if (value.category == 'spices') {
       this.spices.push(value);
     }
-    if (value.category == "sweeteners"){
+    if (value.category == 'sweeteners') {
       this.sweeteners.push(value);
     }
-    if (value.category == "nuts"){
+    if (value.category == 'nuts') {
       this.nuts.push(value);
     }
-    if (value.category == "oils"){
+    if (value.category == 'oils') {
       this.oils.push(value);
     }
-    if (value.category == "sauces"){
+    if (value.category == 'sauces') {
       this.sauces.push(value);
     }
-    if (value.category == "beverages"){
+    if (value.category == 'beverages') {
       this.beverages.push(value);
     }
-    if (value.category == "other"){
+    if (value.category == 'other') {
       this.other.push(value);
     }
   }
 
- toggleDairy() {
-    this.showDairy = !this.showDairy;
- }
- toggleVegetables() {
-  this.showVegetables = !this.showVegetables;
-}
-toggleFruits() {
-  this.showFruits = !this.showFruits;
-}
-toggleGrains() {
-  this.showGrains = !this.showGrains;
-}
-toggleMeat() {
-  this.showMeat = !this.showMeat;
-}
-toggleSeafood() {
-  this.showSeafood = !this.showSeafood;
-}
-toggleSpices() {
-  this.showSpices = !this.showSpices;
-}
-toggleSweeteners() {
-  this.showSweeteners = !this.showSweeteners;
-}
-toggleNuts() {
-  this.showNuts = !this.showNuts;
-}
-toggleOils() {
-  this.showOils = !this.showOils;
-}
-toggleSauces() {
-  this.showSauces = !this.showSauces;
-}
-toggleBeverages() {
-  this.showBeverages = !this.showBeverages;
-}
-toggleOther() {
-  this.showOther = !this.showOther;
-}
+  deleteIngredient(value) {
+    if (value.category == 'dairy') {
+      this.dairy = this.dairy.filter((ingredient) => ingredient !== value);
+    }
+    if (value.category == 'vegetables') {
+      this.vegetables = this.vegetables.filter(
+        (ingredient) => ingredient !== value
+      );
+    }
+    if (value.category == 'fruits') {
+      this.fruits = this.fruits.filter((ingredient) => ingredient !== value);
+    }
+    if (value.category == 'grains') {
+      this.grains = this.grains.filter((ingredient) => ingredient !== value);
+    }
+    if (value.category == 'meat') {
+      this.meat = this.meat.filter((ingredient) => ingredient !== value);
+    }
+    if (value.category == 'seafood') {
+      this.seafood = this.seafood.filter((ingredient) => ingredient !== value);
+    }
+    if (value.category == 'spices') {
+      this.spices = this.spices.filter((ingredient) => ingredient !== value);
+    }
+    if (value.category == 'sweeteners') {
+      this.sweeteners = this.sweeteners.filter(
+        (ingredient) => ingredient !== value
+      );
+    }
+    if (value.category == 'nuts') {
+      this.nuts = this.nuts.filter(
+        (ingredient) => ingredient !== value);
+    }
+    if (value.category == 'oils') {
+      this.oils = this.oils.filter(
+        (ingredient) => ingredient !== value);
+    }
+    if (value.category == 'sauces') {
+      this.sauces = this.sauces.filter(
+        (ingredient) => ingredient !== value);
+    }
+    if (value.category == 'beverages') {
+      this.beverages = this.beverages.filter(
+        (ingredient) => ingredient !== value
+      );
+    }
+    if (value.category == 'other') {
+      this.other = this.other.filter(
+        (ingredient) => ingredient !== value);
+    }
+  }
 
+  toggleDairy() {
+    this.showDairy = !this.showDairy;
+  }
+  toggleVegetables() {
+    this.showVegetables = !this.showVegetables;
+  }
+  toggleFruits() {
+    this.showFruits = !this.showFruits;
+  }
+  toggleGrains() {
+    this.showGrains = !this.showGrains;
+  }
+  toggleMeat() {
+    this.showMeat = !this.showMeat;
+  }
+  toggleSeafood() {
+    this.showSeafood = !this.showSeafood;
+  }
+  toggleSpices() {
+    this.showSpices = !this.showSpices;
+  }
+  toggleSweeteners() {
+    this.showSweeteners = !this.showSweeteners;
+  }
+  toggleNuts() {
+    this.showNuts = !this.showNuts;
+  }
+  toggleOils() {
+    this.showOils = !this.showOils;
+  }
+  toggleSauces() {
+    this.showSauces = !this.showSauces;
+  }
+  toggleBeverages() {
+    this.showBeverages = !this.showBeverages;
+  }
+  toggleOther() {
+    this.showOther = !this.showOther;
+  }
 }
