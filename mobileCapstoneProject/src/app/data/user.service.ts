@@ -16,4 +16,9 @@ export class UserService {
   createUser(form){
     return this.http.post(this.ROOT_URL + '/createUser', form.value)
   }
+
+  updateUser(email, user){
+    return this.http.put(this.ROOT_URL + '/updateUser/' + email, user)
+  }
+
 }
