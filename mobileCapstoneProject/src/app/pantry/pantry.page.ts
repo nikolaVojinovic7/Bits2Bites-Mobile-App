@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { IngredientService } from '../data/ingredient.service';
+import { Ingredient } from '../models/ingredient';
 
 @Component({
   selector: 'app-pantry',
@@ -6,6 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['pantry.page.scss']
 })
 export class PantryPage {
+
+  ingredients: Ingredient[];
+  ingredient: Ingredient;
+
 
   showDairy = false;
   showVegetables = false;
@@ -16,6 +23,20 @@ export class PantryPage {
   showSpices = false;
   showSweeteners = false;
   showNuts = false;
+
+  constructor(private ingredientService: IngredientService) {}
+
+  ngOnInit(): void {
+    this.ingredientService.getAllIngredients()
+      .subscribe((data: any[]) => this.ingredients = data);
+  }
+
+  ingredientChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('ingredient:', event.value);
+  }
 
   toggleDairy() {
     this.showDairy = !this.showDairy;
@@ -44,7 +65,5 @@ toggleSweeteners() {
 toggleNuts() {
   this.showNuts = !this.showNuts;
 }
-
-  constructor() {}
 
 }
