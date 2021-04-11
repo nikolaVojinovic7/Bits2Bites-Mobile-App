@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
+import {RecipeService} from '../data/recipe.service';
+import {SearchResultPage} from './search-result/search-result.page';
 
 @Component({
   selector: 'app-tab1',
@@ -8,11 +10,21 @@ import {Router} from '@angular/router';
 })
 export class Tab1Page {
 
-  constructor(private router: Router) {}
+  titleName: string;
+  recipes: any;
+
+  constructor(private router: Router, private recipeService: RecipeService) {}
+
+  setTitleName(title: string){
+    this.titleName = title;
+  }
 
   goSearchRecipe(){
-    this.router.navigateByUrl('/tabs/tab1/search-result');
+    this.titleName = this.titleName.toLowerCase();
+    this.recipes = this.recipeService.getSetRecipeByName(this.titleName);
+    this.router.navigateByUrl('/tabs/tab1/search-result', { state: { titleName: this.titleName } });
   }
 
 
 }
+

@@ -14,4 +14,6 @@ public interface RecipeServiceAbs extends CrudService<Recipe, Long>{
     Recipe findByName(String name);
 
     Set<Recipe> findAllByName(String name);
+
+    Set<Recipe> findByNameContains(String name);
 }
