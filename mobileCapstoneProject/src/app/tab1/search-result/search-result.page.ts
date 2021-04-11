@@ -15,7 +15,11 @@ export class SearchResultPage implements OnInit {
   constructor(private router: Router, private recipeService: RecipeService) { }
 
   ngOnInit(): void {
-    this.title = history.state.titleName;
+    if (history.state.titleName == null){
+      this.title = 'xyz';
+    }else{
+      this.title = history.state.titleName;
+    }
     console.log(this.title);
     this.recipes = this.recipeService.getSetRecipeContainsName(this.title);
   }

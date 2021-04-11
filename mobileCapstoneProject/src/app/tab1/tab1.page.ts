@@ -20,8 +20,9 @@ export class Tab1Page {
   }
 
   goSearchRecipe(){
-    this.titleName = this.titleName.toLowerCase();
-    this.recipes = this.recipeService.getSetRecipeByName(this.titleName);
+    if (this.titleName != null){
+      this.titleName = this.titleName.toLowerCase();
+    }
     this.router.navigateByUrl('/tabs/tab1/search-result', { state: { titleName: this.titleName } });
   }
 
