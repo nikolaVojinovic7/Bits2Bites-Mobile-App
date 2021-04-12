@@ -20,13 +20,13 @@
     <!-- FULL NAME Row Start -->
     <ion-row class="ion-justify-content-center">
       <ion-col class="user-info" size="5">
-        <div >
+        <div>
           Full Name
         </div>
       </ion-col>
       <ion-col class="user-info" size="6">
         <div>
-          Jone Doe
+          {{fullName}}
         </div>
       </ion-col>
     </ion-row>
@@ -47,7 +47,7 @@
       </ion-col>
       <ion-col class="user-info" size="6">
         <div>
-          StefanGrujic@gmail.com
+          {{email}}
         </div>
       </ion-col>
     </ion-row>
@@ -88,7 +88,7 @@
     <ion-row>
       <ion-col>
         <div>
-          <ion-button href="/login">Log Out</ion-button>
+          <ion-button (click)="logout()">Log Out</ion-button>
         </div>
       </ion-col>
     </ion-row>

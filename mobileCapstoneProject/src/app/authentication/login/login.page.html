@@ -9,6 +9,7 @@
             name="email"
             type="text"
             placeholder="Enter Email"
+            [(ngModel)]="userEmail"
             required
           ></ion-input>
         </ion-item>
@@ -17,6 +18,7 @@
           <ion-input
             name="password"
             type="password"
+            [(ngModel)]="userPassword"
             required
           ></ion-input>
         </ion-item>
@@ -25,7 +27,7 @@
             <ion-button
               type="submit"
               expand="block"
-              routerLink="/tabs/tab1"
+              (click)="login()"
             >
               Log In
             </ion-button>

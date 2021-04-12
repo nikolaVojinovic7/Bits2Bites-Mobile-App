@@ -20,4 +20,9 @@ export class UserService {
   loginUser(email, password) {
     return this.http.get(`${this.ROOT_URL}/login/${email}&${password}`);
   }
+
+  updateUser(email, user){
+    return this.http.put(this.ROOT_URL + '/updateUser/' + email, user)
+  }
+
 }
