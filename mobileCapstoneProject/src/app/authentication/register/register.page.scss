@@ -3,7 +3,7 @@ ion-content {
 }
 
 ion-button {
-  --background: #7C9262;
+  --background: #7c9262;
 }
 
 .logo {
@@ -35,4 +35,9 @@ ion-item {
 .text-red {
   color: red;
   font-weight: bold;
+}
+
+.ion-color-danger {
+  font-weight: bold !important;
+  font-size: large !important;
 }
