@@ -7,30 +7,43 @@
 
     <ion-row>
       <ion-col text-center>
+        <ion-chip *ngIf="errors.username" color="danger">
+          <ion-label>{{errors.username}}</ion-label>
+        </ion-chip>
         <ion-item lines="full">
-          <ion-label position="floating">Full Name</ion-label>
+          <ion-label position="floating">Username</ion-label>
+
           <ion-input
             name="name"
             type="text"
+            [(ngModel)]="this.user.username"
             required
             value="Emmanuel Sogelola"
           ></ion-input>
         </ion-item>
+        <ion-chip *ngIf="errors.email" color="danger">
+          <ion-label>{{errors.email}}</ion-label>
+        </ion-chip>
         <ion-item lines="full">
           <ion-label position="floating">Email</ion-label>
           <ion-input
             name="email"
             type="text"
             required
+            [(ngModel)]="user.email"
             value="emmanuel.sogelola@georgebrown.ca"
           ></ion-input>
         </ion-item>
+        <ion-chip *ngIf="errors.password" color="danger">
+          <ion-label>{{errors.password}}</ion-label>
+        </ion-chip>
         <ion-item lines="full">
           <ion-label position="floating">Password</ion-label>
           <ion-input
             name="password"
             type="password"
             value="emmanuel12"
+            [(ngModel)]="user.password"
             required
           ></ion-input>
         </ion-item>
@@ -40,15 +53,13 @@
             name="confirmPassword"
             type="password"
             value="emmanuel12"
+            [(ngModel)]="user.confirmPassword"
             required
           ></ion-input>
         </ion-item>
         <ion-row>
           <ion-col>
-            <ion-button
-              type="submit"
-              expand="block"
-            >
+            <ion-button type="submit" expand="block" (click)="handleRegister()">
               Register
             </ion-button>
           </ion-col>
@@ -56,7 +67,7 @@
         <ion-row>
           <ion-col class="ion-text-center ion-padding-vertical">
             Already have an account?
-              <a class="text-red" href="/login">Sign In.</a>
+            <a class="text-red" href="/login">Sign In.</a>
           </ion-col>
         </ion-row>
       </ion-col>
