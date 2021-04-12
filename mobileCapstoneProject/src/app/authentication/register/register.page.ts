@@ -13,10 +13,10 @@ export class RegisterPage implements OnInit {
 
   errors = {};
   user: User = {
-    username: 'ameroft',
-    email: 'emmanuel@gmail.com',
-    password: 'e@21',
-    confirmPassword: 'e@21',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   };
 
   ngOnInit() {}
