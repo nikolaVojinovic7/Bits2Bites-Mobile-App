@@ -1,24 +1,28 @@
 <ion-content [fullscreen]="true" padding="true" class="background">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
+
   <ion-grid>
     <ion-row>
       <ion-col text-center>
         <img src="../../assets/bitstobiteslogo.png" class="logo" />
         <ion-item lines="full">
-          <ion-label position="floating">Email</ion-label>
+          <ion-label position="floating" for="email">Email</ion-label>
           <ion-input
+            id="email"
             name="email"
             type="text"
             placeholder="Enter Email"
-            [(ngModel)]="userEmail"
+            ngModel
             required
           ></ion-input>
         </ion-item>
         <ion-item lines="full">
-          <ion-label position="floating">Password</ion-label>
+          <ion-label position="floating" for="password">Password</ion-label>
           <ion-input
+            id="password"
             name="password"
             type="password"
-            [(ngModel)]="userPassword"
+            ngModel
             required
           ></ion-input>
         </ion-item>
@@ -27,7 +31,6 @@
             <ion-button
               type="submit"
               expand="block"
-              (click)="login()"
             >
               Log In
             </ion-button>
@@ -47,4 +50,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+</form>
+
 </ion-content>

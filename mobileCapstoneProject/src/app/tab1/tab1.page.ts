@@ -13,6 +13,9 @@ export class Tab1Page {
   titleName: string;
   recipes: any;
 
+  userData = localStorage.getItem('isUserLoggedIn');
+
+
   constructor(private router: Router, private recipeService: RecipeService) {}
 
   setTitleName(title: string){
