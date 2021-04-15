@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { Plugins } from "@capacitor/core";
+import { UserService } from '../data/user.service'
+import { AuthService } from '../guards/auth.service'
 
 const {Storage} = Plugins;
 
@@ -16,7 +18,7 @@ export class AccountPage implements OnInit {
   password: string;
   fullName: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService : AuthService) { }
 
   ngOnInit() {
     this.readUsers();
@@ -50,7 +52,7 @@ export class AccountPage implements OnInit {
   }
 
   async logout(){
-    await Storage.clear();
+    this.authService.logout();
     this.router.navigateByUrl('/login');
   }
 

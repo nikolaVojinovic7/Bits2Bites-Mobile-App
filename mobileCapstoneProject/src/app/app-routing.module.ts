@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ValidationguardGuard } from '../app/guards/validationguard.guard';
+
 
 const routes: Routes = [
   {
     path: '',
+    canActivate:[ValidationguardGuard],
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
