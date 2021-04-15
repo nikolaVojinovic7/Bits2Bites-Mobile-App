@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from "rxjs/operators";
+import { throwError } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +11,18 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  handleError(error){
+    return throwError(error.message);
+  }
+
   getAllUsers() {
     return this.http.get(this.ROOT_URL + '/allUsers');
+  }
+
+  getUserByEmail(email) {
+    return this.http.get(this.ROOT_URL + '/users/email/' + email).pipe(
+      catchError(this.handleError)
+    );
   }
 
   createUser(form) {
@@ -18,7 +30,9 @@ export class UserService {
   }
 
   loginUser(email, password) {
-    return this.http.get(`${this.ROOT_URL}/login/${email}&${password}`);
+    return this.http.get(`${this.ROOT_URL}/login/${email}&${password}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
   updateUser(email, user){

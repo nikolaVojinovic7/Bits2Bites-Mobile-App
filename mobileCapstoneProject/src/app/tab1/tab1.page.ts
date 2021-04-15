@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {RecipeService} from '../data/recipe.service';
 import {SearchResultPage} from './search-result/search-result.page';
@@ -12,11 +12,14 @@ export class Tab1Page {
 
   titleName: string;
   recipes: any;
-
-  userData = localStorage.getItem('isUserLoggedIn');
+  userEmail:string;
 
 
   constructor(private router: Router, private recipeService: RecipeService) {}
+
+  ngOnInit(): void {
+    this.userEmail = localStorage.getItem('user');
+  }
 
   setTitleName(title: string){
     this.titleName = title;
