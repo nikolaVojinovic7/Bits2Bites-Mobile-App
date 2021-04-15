@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { IngredientService } from '../data/ingredient.service';
+import { PantryService } from '../data/pantry.service';
 import { Ingredient } from '../models/ingredient';
 
 @Component({
@@ -37,13 +38,70 @@ export class PantryPage {
   showSauces = false;
   showBeverages = false;
   showOther = false;
+  userEmail = localStorage.getItem('user');
 
-  constructor(private ingredientService: IngredientService) {}
+  constructor(private ingredientService: IngredientService, private pantryService: PantryService) {}
 
   ngOnInit(): void {
+    this.getIngredients();
+    this.getPantry();
+  }
+
+  getPantry(){
+    this.pantryService
+    .getPantry(this.userEmail)
+    .subscribe((data:any[]) => (this.categorizePantry(data)));
+  }
+
+  categorizePantry(data){
+    data.forEach(element => {
+      if (element.ingredient.category == 'dairy') {
+        this.dairy.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'vegetables') {
+        this.vegetables.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'fruits') {
+        this.fruits.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'grains') {
+        this.grains.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'meat') {
+        this.meat.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'seafood') {
+        this.seafood.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'spices') {
+        this.spices.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'sweeteners') {
+        this.sweeteners.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'nuts') {
+        this.nuts.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'oils') {
+        this.oils.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'sauces') {
+        this.sauces.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'beverages') {
+        this.beverages.push(element.ingredient);
+      }
+      if (element.ingredient.category == 'other') {
+        this.other.push(element.ingredient);
+      }
+    });
+
+  }
+
+  getIngredients(){
     this.ingredientService
-      .getAllIngredients()
-      .subscribe((data: any[]) => (this.ingredients = data));
+    .getAllIngredients()
+    .subscribe((data: any[]) => (this.ingredients = data));
   }
 
   ingredientChange(event: { component: IonicSelectableComponent; value: any }) {
@@ -51,6 +109,9 @@ export class PantryPage {
   }
 
   addIngredient(value) {
+    this.pantryService.addPantryItem(this.userEmail, value)
+    .subscribe((res: any[]) => (console.log(res)));
+
     if (value.category == 'dairy') {
       this.dairy.push(value);
     }

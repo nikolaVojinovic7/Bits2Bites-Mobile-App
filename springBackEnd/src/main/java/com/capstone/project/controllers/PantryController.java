@@ -30,19 +30,14 @@ public class PantryController {
 
 
     //add ingredient to pantry for specific id
-    @PutMapping("/addIngredient/{email}&{id}")
-    public User addIngredientPantry(@PathVariable String email, @PathVariable long id) {
+    @PutMapping("/addIngredient/{email}")
+    public User addIngredientPantry(@PathVariable String email, @RequestBody Ingredient ingredient) {
         Pantry pantryItem = new Pantry();
         User user = userService.findByEmail(email);
         if(user == null){
             throw new ResourceNotFoundException("There is no user with username" + email);
         }
-        Ingredient ingredient = ingredientService.findById(id);
-        if(ingredient == null){
-            throw new ResourceNotFoundException("There is no ingredient with id" + id);
-        }
         pantryItem.setIngredient(ingredient);
-        pantryItem.setCategory(ingredient.getCategory());
         user.addIngredientItem(pantryItem);
         return userService.save(user);
     }
@@ -56,38 +51,21 @@ public class PantryController {
     }
 
     //delete a pantry item by its id
-    @DeleteMapping("deletePantry/{id}&{email}")
-    public Map<String, Boolean> deletePantryItem(@PathVariable Long id, @PathVariable String email){
-        Pantry pantryItem = pantryService.findById(id);
+    @DeleteMapping("deletePantry/{name}&{email}")
+    public Map<String, Boolean> deletePantryItem(@PathVariable String name, @PathVariable String email){
         User user = userService.findByEmail(email);
         if(user == null){
-            throw new ResourceNotFoundException("There is no user with username" + email);
+            throw new ResourceNotFoundException("There is no user with email: " + email);
         }
+        Set<Pantry> pantrySet = user.getPantryIngredients();
         if(pantryItem == null){
-            throw new ResourceNotFoundException("There is no pantry with id" + id);
+            throw new ResourceNotFoundException("There is no pantry with ingredient name: " + id);
         }
         user.removePantryItem(pantryItem);
         userService.save(user);
         Map < String, Boolean > response = new HashMap< >();
         response.put("deleted", Boolean.TRUE);
         return response;
-    }
-
-    //delete a pantry item by its id
-    @GetMapping("updatePantry/{email}&{id}&{expiry}")
-    public User updatePantryItem(@PathVariable String email, @PathVariable String expiry, @PathVariable Long id){
-
-        User user = userService.findByEmail(email);
-        if(user == null){
-            throw new ResourceNotFoundException("There is no user with username" + email);
-        }
-        Set<Pantry> pantryItemSet = user.getPantryIngredients();
-        for (Pantry pantryItem: pantryItemSet) {
-            if(pantryItem.getId() == id){
-                pantryItem.setExpiryDate(expiry);
-            }
-        }
-        return userService.save(user);
     }
 
 }
