@@ -3,6 +3,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 import { IngredientService } from '../data/ingredient.service';
 import { PantryService } from '../data/pantry.service';
 import { Ingredient } from '../models/ingredient';
+import { AlertController } from '@ionic/angular'
 
 @Component({
   selector: 'app-pantry',
@@ -42,7 +43,8 @@ export class PantryPage {
 
   constructor(
     private ingredientService: IngredientService,
-    private pantryService: PantryService
+    private pantryService: PantryService,
+    private alertController: AlertController
   ) {}
 
   ngOnInit(): void {
@@ -164,7 +166,7 @@ export class PantryPage {
           this.other.push(value);
         }
       } else {
-        alert('You already added this ingredient to your pantry!');
+        this.presentAlert();
       }
     })
 
@@ -221,6 +223,15 @@ export class PantryPage {
     if (value.category == 'other') {
       this.other = this.other.filter((ingredient) => ingredient !== value);
     }
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      message: 'You already added this ingredient to the pantry!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   toggleDairy() {
