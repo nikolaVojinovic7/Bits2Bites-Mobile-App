@@ -40,21 +40,24 @@ export class PantryPage {
   showOther = false;
   userEmail = localStorage.getItem('user');
 
-  constructor(private ingredientService: IngredientService, private pantryService: PantryService) {}
+  constructor(
+    private ingredientService: IngredientService,
+    private pantryService: PantryService
+  ) {}
 
   ngOnInit(): void {
     this.getIngredients();
     this.getPantry();
   }
 
-  getPantry(){
+  getPantry() {
     this.pantryService
-    .getPantry(this.userEmail)
-    .subscribe((data:any[]) => (this.categorizePantry(data)));
+      .getPantry(this.userEmail)
+      .subscribe((data: any[]) => this.categorizePantry(data));
   }
 
-  categorizePantry(data){
-    data.forEach(element => {
+  categorizePantry(data) {
+    data.forEach((element) => {
       if (element.ingredient.category == 'dairy') {
         this.dairy.push(element.ingredient);
       }
@@ -95,13 +98,12 @@ export class PantryPage {
         this.other.push(element.ingredient);
       }
     });
-
   }
 
-  getIngredients(){
+  getIngredients() {
     this.ingredientService
-    .getAllIngredients()
-    .subscribe((data: any[]) => (this.ingredients = data));
+      .getAllIngredients()
+      .subscribe((data: any[]) => (this.ingredients = data));
   }
 
   ingredientChange(event: { component: IonicSelectableComponent; value: any }) {
@@ -109,54 +111,70 @@ export class PantryPage {
   }
 
   addIngredient(value) {
-    this.pantryService.addPantryItem(this.userEmail, value)
-    .subscribe((res: any[]) => (console.log(res)));
+    this.pantryService.getPantry(this.userEmail)
+    .subscribe((data: any[]) => {
+      let pantryItemExists = false;
+      data.forEach((pantryItem) => {
+        if(pantryItem.ingredient.name == value.name){
+          pantryItemExists = true;
+        }
+      })
+      if (!pantryItemExists) {
+        this.pantryService
+          .addPantryItem(this.userEmail, value)
+          .subscribe((res: any[]) => console.log(res));
 
-    if (value.category == 'dairy') {
-      this.dairy.push(value);
-    }
-    if (value.category == 'vegetables') {
-      this.vegetables.push(value);
-    }
-    if (value.category == 'fruits') {
-      this.fruits.push(value);
-    }
-    if (value.category == 'grains') {
-      this.grains.push(value);
-    }
-    if (value.category == 'meat') {
-      this.meat.push(value);
-    }
-    if (value.category == 'seafood') {
-      this.seafood.push(value);
-    }
-    if (value.category == 'spices') {
-      this.spices.push(value);
-    }
-    if (value.category == 'sweeteners') {
-      this.sweeteners.push(value);
-    }
-    if (value.category == 'nuts') {
-      this.nuts.push(value);
-    }
-    if (value.category == 'oils') {
-      this.oils.push(value);
-    }
-    if (value.category == 'sauces') {
-      this.sauces.push(value);
-    }
-    if (value.category == 'beverages') {
-      this.beverages.push(value);
-    }
-    if (value.category == 'other') {
-      this.other.push(value);
-    }
+        if (value.category == 'dairy') {
+          this.dairy.push(value);
+        }
+        if (value.category == 'vegetables') {
+          this.vegetables.push(value);
+        }
+        if (value.category == 'fruits') {
+          this.fruits.push(value);
+        }
+        if (value.category == 'grains') {
+          this.grains.push(value);
+        }
+        if (value.category == 'meat') {
+          this.meat.push(value);
+        }
+        if (value.category == 'seafood') {
+          this.seafood.push(value);
+        }
+        if (value.category == 'spices') {
+          this.spices.push(value);
+        }
+        if (value.category == 'sweeteners') {
+          this.sweeteners.push(value);
+        }
+        if (value.category == 'nuts') {
+          this.nuts.push(value);
+        }
+        if (value.category == 'oils') {
+          this.oils.push(value);
+        }
+        if (value.category == 'sauces') {
+          this.sauces.push(value);
+        }
+        if (value.category == 'beverages') {
+          this.beverages.push(value);
+        }
+        if (value.category == 'other') {
+          this.other.push(value);
+        }
+      } else {
+        alert('You already added this ingredient to your pantry!');
+      }
+    })
+
   }
 
   deleteIngredient(value) {
     console.log(value);
-    this.pantryService.deletePantryItem(this.userEmail, value.id)
-    .subscribe((res: any[]) => (console.log(res)));
+    this.pantryService
+      .deletePantryItem(this.userEmail, value.id)
+      .subscribe((res: any[]) => console.log(res));
 
     if (value.category == 'dairy') {
       this.dairy = this.dairy.filter((ingredient) => ingredient !== value);
@@ -187,16 +205,13 @@ export class PantryPage {
       );
     }
     if (value.category == 'nuts') {
-      this.nuts = this.nuts.filter(
-        (ingredient) => ingredient !== value);
+      this.nuts = this.nuts.filter((ingredient) => ingredient !== value);
     }
     if (value.category == 'oils') {
-      this.oils = this.oils.filter(
-        (ingredient) => ingredient !== value);
+      this.oils = this.oils.filter((ingredient) => ingredient !== value);
     }
     if (value.category == 'sauces') {
-      this.sauces = this.sauces.filter(
-        (ingredient) => ingredient !== value);
+      this.sauces = this.sauces.filter((ingredient) => ingredient !== value);
     }
     if (value.category == 'beverages') {
       this.beverages = this.beverages.filter(
@@ -204,8 +219,7 @@ export class PantryPage {
       );
     }
     if (value.category == 'other') {
-      this.other = this.other.filter(
-        (ingredient) => ingredient !== value);
+      this.other = this.other.filter((ingredient) => ingredient !== value);
     }
   }
 
