@@ -3,6 +3,7 @@ package com.capstone.project.controllers;
 import com.capstone.project.exception.ResourceNotFoundException;
 import com.capstone.project.model.Ingredient;
 import com.capstone.project.model.Pantry;
+import com.capstone.project.model.RecipeToIngredient;
 import com.capstone.project.model.User;
 import com.capstone.project.services.IngredientService;
 import com.capstone.project.services.PantryService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 @RestController
@@ -51,20 +53,34 @@ public class PantryController {
     }
 
     //delete a pantry item by its id
-    @DeleteMapping("deletePantry/{name}&{email}")
-    public Map<String, Boolean> deletePantryItem(@PathVariable String name, @PathVariable String email){
+    private static Pantry findPantryItem(Set<Pantry> list, long id) {
+        Pantry value = null;
+        for (Pantry e : list) {
+            if (Objects.equals(e.getIngredient().getId(), id)) {
+                value = e;
+                break;
+            }
+        }
+        return value;
+    }
+
+    @DeleteMapping("deletePantry/{email}&{id}")
+    public Map<String, Boolean> deletePantryItem(@PathVariable String email, @PathVariable long id){
         User user = userService.findByEmail(email);
         if(user == null){
             throw new ResourceNotFoundException("There is no user with email: " + email);
         }
         Set<Pantry> pantrySet = user.getPantryIngredients();
-        if(pantryItem == null){
-            throw new ResourceNotFoundException("There is no pantry with ingredient name: " + id);
-        }
-        user.removePantryItem(pantryItem);
-        userService.save(user);
+        Pantry pantryItem = findPantryItem(pantrySet,id);
         Map < String, Boolean > response = new HashMap< >();
-        response.put("deleted", Boolean.TRUE);
+        if(pantryItem == null){
+            response.put("deleted", Boolean.FALSE);
+        }
+        else {
+            user.removePantryItem(pantryItem);
+            userService.save(user);
+            response.put("deleted", Boolean.TRUE);
+        }
         return response;
     }
 

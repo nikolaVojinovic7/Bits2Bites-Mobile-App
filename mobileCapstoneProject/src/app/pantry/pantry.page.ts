@@ -154,6 +154,10 @@ export class PantryPage {
   }
 
   deleteIngredient(value) {
+    console.log(value);
+    this.pantryService.deletePantryItem(this.userEmail, value.id)
+    .subscribe((res: any[]) => (console.log(res)));
+
     if (value.category == 'dairy') {
       this.dairy = this.dairy.filter((ingredient) => ingredient !== value);
     }

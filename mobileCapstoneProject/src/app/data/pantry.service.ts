@@ -15,11 +15,11 @@ export class PantryService {
     return this.http.get(this.ROOT_URL + 'allPantry/' + email)
   }
 
-  addPantryItem(email: string, ingredient: Ingredient): any{
+  addPantryItem(email: string, ingredient: any): any{
     return this.http.put(this.ROOT_URL + 'addIngredient/' + email, ingredient)
   }
 
-  deletePantryItem(id: number, email: string): any{
-    return this.http.delete(this.ROOT_URL + 'deletePantry/' + id + "&" + email)
+  deletePantryItem(email: string, id: number): any{
+    return this.http.delete(this.ROOT_URL + 'deletePantry/' + email + "&" + id)
   }
 }
