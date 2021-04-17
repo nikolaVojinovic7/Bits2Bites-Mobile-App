@@ -11,6 +11,8 @@ import { RecipeService } from '../../data/recipe.service';
 export class SearchResultPage implements OnInit {
   recipes: any;
   title: string;
+  titleName2: string;
+  recipe: any;
 
   constructor(private router: Router, private recipeService: RecipeService) { }
 
@@ -20,11 +22,19 @@ export class SearchResultPage implements OnInit {
     }else{
       this.title = history.state.titleName;
     }
-    console.log(this.title);
     this.recipes = this.recipeService.getSetRecipeContainsName(this.title);
   }
 
-  goStartRecipe(){
-    this.router.navigateByUrl('/tabs/tab1/start-recipe');
+  goStartRecipe(name: string){
+    this.recipe = this.recipeService.getRecipeByName(name);
+    this.router.navigateByUrl('/tabs/tab1/start-recipe', { state: { recipeTitle: name } });
+  }
+
+  goSearchRecipe2(){
+    if (this.titleName2 != null){
+      this.title = this.titleName2.toLowerCase();
+    }
+    console.log(this.title);
+    this.recipes = this.recipeService.getSetRecipeContainsName(this.title);
   }
 }
