@@ -12,7 +12,7 @@ export class Tab1Page {
 
   titleName: string;
   recipes: any;
-  userEmail:string;
+  userEmail: string;
 
 
   constructor(private router: Router, private recipeService: RecipeService) {}
