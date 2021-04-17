@@ -29,65 +29,54 @@ export class PasswordPage implements OnInit {
   savePassword(){
 
     if(this.oldPassword == this.password && this.userPassword == this.userPasswordConfirm){
-      this.changePassword();
-
-      this.router.navigateByUrl("/tabs/account")
+      this.changePassword();      
     }
     else{
       alert("Incorrect password");
     }
   }
 
-  async readUsers(){
-    this.userData = [];
-    const {keys} = await Storage.keys();
-    keys.forEach(this.getUser, this)
+  readUsers(){
+    this.email = localStorage.getItem('user');    
+
+    this.userService.getUserByEmail(this.email).subscribe((data) =>{
+
+        let obj = <User>data;
+        this.fullName = obj.username
+        this.password = obj.password
+      
+    }, (error) =>{
+
+      console.log('ERROR IS:   ' + error);
+      alert("Invaild" + error)
+    })
   }
 
-  async getUser(key){
-    const item = await Storage.get({key: "0"});
-    let user = JSON.parse(item.value);
-    this.userData.push(user);
+  changePassword() {
+    let user = {username: this.fullName, email: this.email, password: this.userPasswordConfirm};    
 
-    this.email = this.userData[0].email;
-    this.fullName = this.userData[0].fullName;
-    this.password = this.userData[0].password;
+    this.userService.updateUser(this.email, user).subscribe((data) =>{
+
+      this.router.navigateByUrl("/tabs/account")
+        
+    }, (error) =>{
+
+      console.log('ERROR IS:   ' + error);
+      alert("Invaild" + error)
+    })    
+
   }
 
-  async changePassword() {
-    await Storage.clear();
-    this.saveUser();
-    console.log(this.userData);
-
-    let user = {username: this.fullName, email: this.email, password: this.userPassword};
-    
-    this.userService.updateUser(this.email, user);
-  }
-
-
-  saveUser(){
-    const user = new User(this.email, this.userPassword, this.fullName);
-    this.setObject(JSON.stringify("0"), user);
-  }
-
-  async setObject(key:string, value:any){
-    await Storage.set(
-      {
-        key: "0",
-        value: JSON.stringify(value)
-      }
-    );
-  }
 }
 
 export class User{
   email: string;
   password: string;
-  fullName: string;
+  username: string;
 
-  constructor(email: string, password: string, fullName: string){
+  constructor(email: string, password: string, username: string){
     this.email = email;
     this.password = password;
-    this.fullName = fullName;
+    this.username = username;
   }
 }
