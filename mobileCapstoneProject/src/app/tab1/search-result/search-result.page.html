@@ -6,7 +6,10 @@
 
     <ion-title>Search Recipes</ion-title>
   </ion-toolbar>
-  <ion-toolbar><ion-searchbar></ion-searchbar></ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="titleName2" ></ion-searchbar>
+    <ion-button (click)="goSearchRecipe2()">See Search Results</ion-button>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -14,11 +17,7 @@
     <ion-card-header>
       <ion-card-title>{{item.name}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content
-      ><img
-        src="{{item.imageUrl}}"
-        (click)="goStartRecipe()"
-        class="recipe-img"
-    /></ion-card-content>
+    <ion-card-content><img src="{{item.imageUrl}}" (click)="goStartRecipe(item.name)" class="recipe-img"/></ion-card-content>
+
   </ion-card>
 </ion-content>

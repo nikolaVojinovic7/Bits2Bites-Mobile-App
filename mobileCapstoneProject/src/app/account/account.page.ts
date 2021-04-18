@@ -17,12 +17,17 @@ export class AccountPage implements OnInit {
   email: string;
   password: string;
   fullName: string;
+  test: {};
 
-  constructor(private router: Router, private authService : AuthService) { }
+  constructor(private router: Router, private authService : AuthService, private userService: UserService) { }
 
   ngOnInit() {
     this.readUsers();
   }
+
+  ionViewWillEnter() {
+    this.readUsers();
+  };
 
   goUsername(){
     this.router.navigateByUrl('/tabs/account/username')
@@ -36,24 +41,20 @@ export class AccountPage implements OnInit {
     this.router.navigateByUrl('/tabs/account/password')
   }
 
-  async readUsers(){
-    this.userData = [];
-    const {keys} = await Storage.keys();
-    keys.forEach(this.getUser, this)
-  }
+  readUsers(){
+    this.email = localStorage.getItem('user');    
 
-  async getUser(key){
-    const item = await Storage.get({key: "0"});
-    let user = JSON.parse(item.value);
-    this.userData.push(user);
+    this.userService.getUserByEmail(this.email).subscribe((data) =>{
 
-    this.email = this.userData[0].email;
-    this.fullName = this.userData[0].fullName;
-  }
+          let obj = <User>data;
+          this.fullName = obj.username
+        
+      }, (error) =>{
 
-  async logout(){
-    this.authService.logout();
-    this.router.navigateByUrl('/login');
+        console.log('ERROR IS:   ' + error);
+        alert("Invaild" + error)
+      })
+
   }
 
 }
@@ -61,11 +62,11 @@ export class AccountPage implements OnInit {
 export class User{
   email: string;
   password: string;
-  fullName: string;
+  username: string;
 
-  constructor(email: string, password: string, fullName: string){
+  constructor(email: string, password: string, username: string){
     this.email = email;
     this.password = password;
-    this.fullName = fullName;
+    this.username = username;
   }
 }

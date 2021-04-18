@@ -6,23 +6,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
+  <ion-grid *ngFor="let item of (favorites | async)">
     <ion-row>
       <ion-col size="6">
         <ion-icon name="heart"></ion-icon>
-        <ion-img src="../assets/img/favourites/fav1.jpg"></ion-img>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-icon name="heart"></ion-icon>
-        <ion-img src="../assets/img/favourites/fav4.jpg"></ion-img>
+        <ion-img src="{{item.imageUrl}}" (click)="goStartRecipe(item.name)"></ion-img>
       </ion-col>
     </ion-row>
-    <!-- Test Row  -->
-    <ion-row>
-      <ion-button (click)="getUser(userEmail)" color="dark">Get Username</ion-button>
-      <ion-col>{{name}}</ion-col>
-    </ion-row>
-
   </ion-grid>
+
 </ion-content>
