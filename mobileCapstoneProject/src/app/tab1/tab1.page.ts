@@ -40,11 +40,13 @@ export class Tab1Page {
     });
   }
 
-  goToRecipe(recipeId: number, recipe: String) {
+  goToRecipe( recipe: String) {
     console.log('User clicked: ' + recipe);
 
     this.router.navigateByUrl('/tabs/tab1/start-recipe', {
-      state: { recipeName: recipe, id: recipeId },
+      state: { recipeTitle: recipe},
     });
   }
+
+
 }

@@ -42,13 +42,13 @@ export class AccountPage implements OnInit {
   }
 
   readUsers(){
-    this.email = localStorage.getItem('user');    
+    this.email = localStorage.getItem('user');
 
     this.userService.getUserByEmail(this.email).subscribe((data) =>{
 
           let obj = <User>data;
           this.fullName = obj.username
-        
+
       }, (error) =>{
 
         console.log('ERROR IS:   ' + error);

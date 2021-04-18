@@ -19,7 +19,7 @@
       <ion-card-title>{{item.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content
-      ><img src="{{item.imageUrl}}" (click)="goToRecipe()" class="recipe-img" />
+      ><img src="{{item.imageUrl}}" (click)="goToRecipe(item.name)" class="recipe-img" />
     </ion-card-content>
   </ion-card>
 </ion-content>

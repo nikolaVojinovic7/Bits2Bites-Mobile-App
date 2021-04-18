@@ -42,7 +42,7 @@ export class AuthService {
     this.isUserLoggedIn = false;
     localStorage.removeItem('isUserLoggedIn');
     localStorage.removeItem('user');
-
+    this.router.navigate(['/login']);
   }
 
   isValid():boolean{
