@@ -1,6 +1,30 @@
 ion-button {
-  --background: #7C9262;
+  --background: #7c9262;
 }
-ion-searchbar{
+ion-searchbar {
   --background: white;
+}
+
+.recipe-img {
+}
+ion-card {
+  height: 500px;
+}
+.recipeContainer {
+  margin-left: 50px !important;
+}
+
+.recipeContainer p {
+  color: black;
+  font-size: large;
+  text-transform: uppercase;
+  align-items: center;
+  margin-left: 50px !important;
+}
+
+.recipeContainer ion-slide {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 50px;
+  box-shadow: 10px;
 }

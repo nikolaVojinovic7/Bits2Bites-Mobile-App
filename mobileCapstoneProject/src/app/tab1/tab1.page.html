@@ -4,17 +4,22 @@
   </ion-buttons>
 
   <ion-toolbar>
-    <ion-title>Search Recipes</ion-title>
+    <ion-title>Discover</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar [(ngModel)]="titleName" ></ion-searchbar>
+    <ion-searchbar [(ngModel)]="titleName"></ion-searchbar>
     <ion-button (click)="goSearchRecipe()">See Search Results</ion-button>
   </ion-toolbar>
 </ion-header>
 
-
-<ion-content>
-  <!-- Testing to see thelocal storge here feel free to get rid of it-->
-  <h2>{{userEmail}}</h2>
-
+<ion-content class="recipeContainer">
+  <p>USE YOUR RECIPES</p>
+  <ion-card *ngFor="let item of recipes">
+    <ion-card-header>
+      <ion-card-title>{{item.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content
+      ><img src="{{item.imageUrl}}" (click)="goToRecipe()" class="recipe-img" />
+    </ion-card-content>
+  </ion-card>
 </ion-content>

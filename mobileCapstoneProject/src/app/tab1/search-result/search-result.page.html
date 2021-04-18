@@ -13,12 +13,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of (recipes | async)" >
+  <ion-card *ngFor="let item of (recipes | async)">
     <ion-card-header>
       <ion-card-title>{{item.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content><img src="{{item.imageUrl}}" (click)="goStartRecipe(item.name)" class="recipe-img"/></ion-card-content>
+
   </ion-card>
 </ion-content>
-
-
