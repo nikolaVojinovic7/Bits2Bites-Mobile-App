@@ -21,6 +21,12 @@ export class AccountPage implements OnInit {
 
   constructor(private router: Router, private authService : AuthService, private userService: UserService) { }
 
+  logout(){
+    localStorage.removeItem('isUserLoggedIn');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit() {
     this.readUsers();
   }
